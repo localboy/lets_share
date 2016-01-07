@@ -1,0 +1,147 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+
+{% block jquery %}
+    <!--alert("hello");-->
+    $signUpCount = {{ count }};
+    <!--$(".progress-bar").css("width","80%").attr("aria-valuenow","80").text("80%");-->
+    if($signUpCount>0 && $signUpCount<5){
+        $newPercent = $signUpCount/5 * 100;
+        $("#count5").css("width",$newPercent + "%").attr("aria-valuenow",$newPercent).text($newPercent + "%");
+    }else if($signUpCount>=5 && $signUpCount<15){
+        $("#count5").css("width","100%").attr("aria-valuenow",100).text("Completed");
+        $newCount = $signUpCount-5;
+        $newPercent = $newCount/(15-5) * 100;
+        $("#count15").css("width",$newPercent + "%").attr("aria-valuenow",$newPercent).text($newPercent + "%");
+    }else if($signUpCount>=15 && $signUpCount<25){
+        $("#count5").css("width","100%").attr("aria-valuenow",100).text("Completed");
+        $("#count15").css("width","100%").attr("aria-valuenow",100).text("Completed");
+        $newCount = $signUpCount-15;
+        $newPercent = $newCount/(25-15) * 100;
+        $("#count25").css("width",$newPercent + "%").attr("aria-valuenow",$newPercent).text($newPercent + "%");
+    }else if($signUpCount>=25 && $signUpCount<50){
+        $("#count5").css("width","100%").attr("aria-valuenow",100).text("Completed");
+        $("#count15").css("width","100%").attr("aria-valuenow",100).text("Completed");
+        $("#count25").css("width","100%").attr("aria-valuenow",100).text("Completed");
+        $newCount = $signUpCount-25;
+        $newPercent = $newCount/(50-25) * 100;
+        $("#count50").css("width",$newPercent + "%").attr("aria-valuenow",$newPercent).text($newPercent + "%");
+    }else{
+        $("#count5").css("width","100%").attr("aria-valuenow",100).text("Completed");
+        $("#count15").css("width","100%").attr("aria-valuenow",100).text("Completed");
+        $("#count25").css("width","100%").attr("aria-valuenow",100).text("Completed");
+        $("#count50").css("width","100%").attr("aria-valuenow",100).text("Completed");
+    }
+{% endblock %}
+
+{% block test %}
+{% include "nvbar.html" %}
+    <div class="jumbotron">
+      <div class="container">
+          <div class="row">
+            <div class="col-md-6 pull-right" style="text-align: center">
+                <i class="fa fa-share-alt fa-5x"></i>
+              <h1></i>Invite Friends &amp; Earn Rewards</h1>
+              <p>Share your unique link below via Email, Facebook, Twitter, Raddit or LinkedIn to
+              earn rewards from CodingForEnterpreneurs.com</p>
+              <div class="well" style="background-color: #ffffff">{{ ref_url }}</div>
+                <a href="https://www.facebook.com/sharer/sharer.php?u={{ ref_url }}/">
+                <i class="fa fa-facebook-square fa-4x" style="color: #3b5998"></i></a>
+                <i class="fa fa-twitter-square fa-4x" style="color: #4099FF"></i>
+                <i class="fa fa-linkedin-square fa-4x" style="color: #007bb6"></i>
+                <i class="fa fa-reddit-square fa-4x" style="color: #900020"></i>
+                <a href='https://plus.google.com/share?url={ ref_url }}'>
+                <i class="fa fa-google-plus-square fa-4x" style="color: #D34836"></i></a>
+            </div>
+            <div class="col-md-6 pull-left">
+              <img src="{% static 'img/launch.jpg' %}" class="img-responsive img-rounded">
+            </div>
+          </div>
+      </div>
+    </div>
+    <div class="container" style="text-align: center">
+        Joined Number is :{{ count }}<br>
+        <div class="row">
+            <div class="col-sm-3">
+                <h3>5 Joined</h3>
+                <div class="progress">
+                  <div class="progress-bar" id="count5" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%;">
+                   0%
+                  </div>
+                </div>
+                <h4>Reward Name</h4>
+                <img src="https://cfe-static.s3.amazonaws.com/static/img/ico/apple-touch-icon-72-precomposed.png" />
+                <img src="https://cfe-static.s3.amazonaws.com/static/img/ico/apple-touch-icon-72-precomposed.png" />
+                <hr>
+                <span style="text-align: left !important;">
+                    <h5>Reward include:</h5>
+                    <ul>
+                        <li>Reward 1</li>
+                        <li>Reward 1</li>
+                    </ul>
+                </span>
+                <hr>
+            </div>
+            <div class="col-sm-3">
+                <h3>15 Joined</h3>
+                <div class="progress">
+                  <div class="progress-bar" id="count15" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%;">
+                   0%
+                  </div>
+                </div>
+                <h4>Reward Name</h4>
+                <img src="https://cfe-static.s3.amazonaws.com/static/img/ico/apple-touch-icon-72-precomposed.png" />
+                <img src="https://cfe-static.s3.amazonaws.com/static/img/ico/apple-touch-icon-72-precomposed.png" />
+                <hr>
+                <span style="text-align: left !important;">
+                    <h5>Reward include:</h5>
+                    <ul>
+                        <li>Reward 1</li>
+                        <li>Reward 1</li>
+                    </ul>
+                </span>
+                <hr>
+            </div>
+            <div class="col-sm-3">
+                <h3>25 Joined</h3>
+                <div class="progress">
+                  <div class="progress-bar" id="count25" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%;">
+                   0%
+                  </div>
+                </div>
+                <h4>Reward Name</h4>
+                <img src="https://cfe-static.s3.amazonaws.com/static/img/ico/apple-touch-icon-72-precomposed.png" />
+                <img src="https://cfe-static.s3.amazonaws.com/static/img/ico/apple-touch-icon-72-precomposed.png" />
+                <hr>
+                <span style="text-align: left !important;">
+                    <h5>Reward include:</h5>
+                    <ul>
+                        <li>Reward 1</li>
+                        <li>Reward 1</li>
+                    </ul>
+                </span>
+                <hr>
+            </div>
+            <div class="col-sm-3">
+                <h3>50 Joined</h3>
+                <div class="progress">
+                  <div class="progress-bar" id="count50" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%;">
+                   0%
+                  </div>
+                </div>
+                <h4>Reward Name</h4>
+                <img src="https://cfe-static.s3.amazonaws.com/static/img/ico/apple-touch-icon-72-precomposed.png" />
+                <img src="https://cfe-static.s3.amazonaws.com/static/img/ico/apple-touch-icon-72-precomposed.png" />
+                <hr>
+                <span style="text-align: left !important;">
+                    <h5>Reward include:</h5>
+                    <ul>
+                        <li>Reward 1</li>
+                        <li>Reward 1</li>
+                    </ul>
+                </span>
+                <hr>
+            </div>
+        </div>
+    </div>
+{% endblock %}
