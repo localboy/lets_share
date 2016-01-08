@@ -5,7 +5,13 @@
     <!--alert("hello");-->
     $signUpCount = {{ count }};
     <!--$(".progress-bar").css("width","80%").attr("aria-valuenow","80").text("80%");-->
-    if($signUpCount>0 && $signUpCount<5){
+    if($signUpCount==0){
+        $("#count5").css("width","0%").attr("aria-valuenow",0).text("");
+        $("#count15").css("width","0%").attr("aria-valuenow",0).text("");
+        $("#count25").css("width","0%").attr("aria-valuenow",0).text("");
+        $("#count50").css("width","0%").attr("aria-valuenow",0).text("");
+    }
+    else if($signUpCount>0 && $signUpCount<5){
         $newPercent = $signUpCount/5 * 100;
         $("#count5").css("width",$newPercent + "%").attr("aria-valuenow",$newPercent).text($newPercent + "%");
     }else if($signUpCount>=5 && $signUpCount<15){
@@ -34,8 +40,8 @@
     }
 {% endblock %}
 
-{% block test %}
-{% include "nvbar.html" %}
+{% block content %}
+{% include "navbar.html" %}
     <div class="jumbotron">
       <div class="container">
           <div class="row">
